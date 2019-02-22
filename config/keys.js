@@ -1,4 +1,5 @@
-module.exports = {
-  mongoURI: "mongodb://arpi:arpi123@ds127545.mlab.com:27545/fullstack_db",
-  secretOrKey: 'secret'
+if (process.env.NODE_ENV === 'production') {
+  module.exports = require('./keys_prod');
+} else {
+  module.exports = require('./keys_dev');
 }
