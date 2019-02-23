@@ -39,14 +39,18 @@ class CreateProfile extends Component {
     this.props.getCurrentProfile();
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.errors) {
+  componentDidUpdate(prevProps) {
+    if (prevProps.errors !== this.props.errors) {
       this.setState({
-        errors: nextProps.errors
+        errors: this.props.errors
       });
     }
-    if (nextProps.profile.profile) {
-      const profile = nextProps.profile.profile;
+
+    if (
+      prevProps.profile.profile !== this.props.profile.profile &&
+      this.props.profile.profile
+    ) {
+      const profile = this.props.profile.profile;
 
       // Bring skills array back to comma separated value
       const skillsCSV = profile.skills.join(',');

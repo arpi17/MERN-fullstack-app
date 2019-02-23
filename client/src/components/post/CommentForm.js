@@ -15,10 +15,10 @@ export class CommentForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.errors) {
+  componentDidUpdate(prevProps) {
+    if (prevProps.errors !== this.props.errors) {
       this.setState({
-        errors: nextProps.errors
+        errors: this.props.errors
       });
     }
   }

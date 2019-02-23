@@ -26,11 +26,10 @@ class Register extends Component {
     }
   }
 
-  // TODO: Change it to a relevant lifecycle method
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.errors) {
+  componentDidUpdate(prevProps) {
+    if (prevProps.errors !== this.props.errors) {
       this.setState({
-        errors: nextProps.errors
+        errors: this.props.errors
       });
     }
   }
